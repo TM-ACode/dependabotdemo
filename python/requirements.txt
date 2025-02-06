@@ -205,7 +205,9 @@ googleapis-common-protos==1.59.1
     #   opentelemetry-exporter-jaeger-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
 greenlet==3.1.1
-    # via gevent
+    # via
+    #   gevent
+    #   sqlalchemy
 grpcio==1.68.0rc1
     # via opentelemetry-exporter-jaeger-proto-grpc
 h11==0.14.0
@@ -239,9 +241,7 @@ importlib-metadata==8.4.0
     #   opentelemetry-api
     #   opentelemetry-instrumentation-flask
 importlib-resources==6.4.5
-    # via
-    #   flask-restx
-    #   limits
+    # via flask-restx
 iniconfig==2.0.0
     # via pytest
 isodate==0.7.2
@@ -263,6 +263,526 @@ jinja2==3.1.3
     # via
     #   -r python/requirements.in
     #   flask
+jiter==0.8.2
+    # via openai
+joblib==1.4.2
+    # via scikit-learn
+jsonpatch==1.33
+    # via langchain-core
+jsonpointer==3.0.0
+    # via jsonpatch
+jsonschema==4.23.0
+    # via
+    #   flask-restx
+    #   promptflow-core
+jsonschema-specifications==2024.10.1
+    # via jsonschema
+keyring==24.3.1
+    # via promptflow-devkit
+langchain==0.3.17
+    # via -r python/requirements.in
+langchain-core==0.3.33
+    # via
+    #   langchain
+    #   langchain-text-splitters
+langchain-text-splitters==0.3.5
+    # via langchain
+langsmith==0.3.6
+    # via
+    #   langchain
+    #   langchain-core
+limits==4.0.1
+    # via slowapi
+locust==2.32.8
+    # via -r python/requirements.in
+mako==1.3.9
+    # via pytest-bdd
+markupsafe==3.0.2
+    # via
+    #   jinja2
+    #   mako
+    #   werkzeug
+marshmallow==3.26.1
+    # via promptflow-devkit
+mccabe==0.7.0
+    # via flake8
+more-itertools==10.6.0
+    # via jaraco-classes
+msal==1.31.1
+    # via
+    #   azure-identity
+    #   azure-kusto-data
+    #   msal-extensions
+msal-extensions==1.2.0
+    # via azure-identity
+msgpack==1.0.2
+    # via
+    #   -r python/requirements.in
+    #   locust
+msrest==0.7.1
+    # via azure-monitor-opentelemetry-exporter
+multidict==6.1.0
+    # via
+    #   aiohttp
+    #   yarl
+mypy-extensions==1.0.0
+    # via black
+nodeenv==1.9.1
+    # via pre-commit
+numpy==2.2.2
+    # via
+    #   faiss-cpu
+    #   geopandas
+    #   langchain
+    #   pandas
+    #   patsy
+    #   pyogrio
+    #   scikit-learn
+    #   scipy
+    #   shapely
+    #   statsmodels
+    #   timezonefinder
+oauthlib==3.2.2
+    # via requests-oauthlib
+openai==1.61.1
+    # via
+    #   -r python/requirements.in
+    #   promptflow-tracing
+opentelemetry-api==1.27.0
+    # via
+    #   azure-core-tracing-opentelemetry
+    #   azure-monitor-opentelemetry-exporter
+    #   opentelemetry-exporter-jaeger-proto-grpc
+    #   opentelemetry-exporter-jaeger-thrift
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-instrumentation
+    #   opentelemetry-instrumentation-asgi
+    #   opentelemetry-instrumentation-dbapi
+    #   opentelemetry-instrumentation-django
+    #   opentelemetry-instrumentation-fastapi
+    #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-psycopg2
+    #   opentelemetry-instrumentation-requests
+    #   opentelemetry-instrumentation-urllib
+    #   opentelemetry-instrumentation-urllib3
+    #   opentelemetry-instrumentation-wsgi
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
+opentelemetry-exporter-jaeger==1.21.0
+    # via -r python/requirements.in
+opentelemetry-exporter-jaeger-proto-grpc==1.21.0
+    # via opentelemetry-exporter-jaeger
+opentelemetry-exporter-jaeger-thrift==1.21.0
+    # via opentelemetry-exporter-jaeger
+opentelemetry-exporter-otlp-proto-common==1.27.0
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-proto-http==1.27.0
+    # via promptflow-devkit
+opentelemetry-instrumentation==0.48b0
+    # via
+    #   opentelemetry-instrumentation-asgi
+    #   opentelemetry-instrumentation-dbapi
+    #   opentelemetry-instrumentation-django
+    #   opentelemetry-instrumentation-fastapi
+    #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-psycopg2
+    #   opentelemetry-instrumentation-requests
+    #   opentelemetry-instrumentation-urllib
+    #   opentelemetry-instrumentation-urllib3
+    #   opentelemetry-instrumentation-wsgi
+opentelemetry-instrumentation-asgi==0.48b0
+    # via opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-dbapi==0.48b0
+    # via opentelemetry-instrumentation-psycopg2
+opentelemetry-instrumentation-django==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-fastapi==0.48b0
+    # via
+    #   -r python/requirements.in
+    #   azure-monitor-opentelemetry
+opentelemetry-instrumentation-flask==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-psycopg2==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-requests==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-urllib==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-urllib3==0.48b0
+    # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-wsgi==0.48b0
+    # via
+    #   opentelemetry-instrumentation-django
+    #   opentelemetry-instrumentation-flask
+opentelemetry-proto==1.27.0
+    # via
+    #   opentelemetry-exporter-otlp-proto-common
+    #   opentelemetry-exporter-otlp-proto-http
+opentelemetry-resource-detector-azure==0.1.5
+    # via azure-monitor-opentelemetry
+opentelemetry-sdk==1.27.0
+    # via
+    #   azure-monitor-opentelemetry
+    #   azure-monitor-opentelemetry-exporter
+    #   opentelemetry-exporter-jaeger-proto-grpc
+    #   opentelemetry-exporter-jaeger-thrift
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-resource-detector-azure
+    #   promptflow-tracing
+opentelemetry-semantic-conventions==0.48b0
+    # via
+    #   opentelemetry-instrumentation-asgi
+    #   opentelemetry-instrumentation-dbapi
+    #   opentelemetry-instrumentation-django
+    #   opentelemetry-instrumentation-fastapi
+    #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-requests
+    #   opentelemetry-instrumentation-urllib
+    #   opentelemetry-instrumentation-urllib3
+    #   opentelemetry-instrumentation-wsgi
+    #   opentelemetry-sdk
+opentelemetry-util-http==0.48b0
+    # via
+    #   opentelemetry-instrumentation-asgi
+    #   opentelemetry-instrumentation-django
+    #   opentelemetry-instrumentation-fastapi
+    #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-requests
+    #   opentelemetry-instrumentation-urllib
+    #   opentelemetry-instrumentation-urllib3
+    #   opentelemetry-instrumentation-wsgi
+orjson==3.10.15
+    # via
+    #   -r python/requirements.in
+    #   langsmith
+packaging==24.2
+    # via
+    #   black
+    #   faiss-cpu
+    #   geopandas
+    #   langchain-core
+    #   limits
+    #   marshmallow
+    #   opentelemetry-instrumentation-flask
+    #   pyogrio
+    #   pytest
+    #   pytest-bdd
+    #   pytest-sugar
+    #   statsmodels
+pandas==2.2.3
+    # via
+    #   -r python/requirements.in
+    #   geopandas
+    #   promptflow-devkit
+    #   statsmodels
+parse==1.20.2
+    # via
+    #   parse-type
+    #   pytest-bdd
+parse-type==0.6.4
+    # via pytest-bdd
+pathspec==0.12.1
+    # via black
+patsy==1.0.1
+    # via statsmodels
+pillow==10.4.0
+    # via promptflow-devkit
+platformdirs==4.3.6
+    # via
+    #   black
+    #   virtualenv
+pluggy==1.5.0
+    # via pytest
+portalocker==2.10.1
+    # via msal-extensions
+pre-commit==3.4.0
+    # via -r python/requirements.in
+promptflow==1.16.1
+    # via -r python/requirements.in
+promptflow-core==1.16.1
+    # via
+    #   promptflow
+    #   promptflow-devkit
+promptflow-devkit==1.16.1
+    # via
+    #   -r python/requirements.in
+    #   promptflow
+promptflow-tracing==1.16.1
+    # via
+    #   promptflow
+    #   promptflow-core
+propcache==0.2.1
+    # via
+    #   aiohttp
+    #   yarl
+protobuf==3.20.3
+    # via
+    #   -r python/requirements.in
+    #   googleapis-common-protos
+    #   opentelemetry-proto
+psutil==5.9.8
+    # via
+    #   azure-monitor-opentelemetry-exporter
+    #   locust
+    #   promptflow-core
+pyasn1==0.6.1
+    # via
+    #   python-jose
+    #   rsa
+pycodestyle==2.12.1
+    # via flake8
+pycparser==2.22
+    # via cffi
+pydantic==2.10.6
+    # via
+    #   -r python/requirements.in
+    #   fastapi
+    #   fastapi-third-party-auth
+    #   langchain
+    #   langchain-core
+    #   langsmith
+    #   openai
+    #   pydantic-settings
+pydantic-core==2.27.2
+    # via pydantic
+pydantic-settings==2.7.1
+    # via -r python/requirements.in
+pydash==7.0.7
+    # via promptflow-devkit
+pyflakes==3.2.0
+    # via
+    #   autoflake
+    #   flake8
+pyjwt[crypto]==2.10.1
+    # via
+    #   msal
+    #   pyjwt
+pyogrio==0.10.0
+    # via geopandas
+pyowm==3.3.0
+    # via -r python/requirements.in
+pyproj==3.7.0
+    # via geopandas
+pysocks==1.7.1
+    # via
+    #   pyowm
+    #   requests
+pytest==8.3.4
+    # via
+    #   -r python/requirements.in
+    #   pytest-asyncio
+    #   pytest-bdd
+    #   pytest-cov
+    #   pytest-env
+    #   pytest-instafail
+    #   pytest-mock
+    #   pytest-sugar
+    #   pytest-xdist
+pytest-asyncio==0.25.3
+    # via -r python/requirements.in
+pytest-bdd==8.1.0
+    # via -r python/requirements.in
+pytest-cov==6.0.0
+    # via -r python/requirements.in
+pytest-env==1.1.5
+    # via -r python/requirements.in
+pytest-instafail==0.5.0
+    # via -r python/requirements.in
+pytest-mock==3.14.0
+    # via -r python/requirements.in
+pytest-sugar==1.0.0
+    # via -r python/requirements.in
+pytest-xdist==3.6.1
+    # via -r python/requirements.in
+python-dateutil==2.9.0.post0
+    # via
+    #   azure-kusto-data
+    #   pandas
+    #   promptflow-core
+    #   strictyaml
+python-dotenv==1.0.1
+    # via
+    #   -r python/requirements.in
+    #   promptflow-devkit
+    #   pydantic-settings
+python-jose[cryptography]==3.3.0
+    # via fastapi-third-party-auth
+pytz==2025.1
+    # via
+    #   -r python/requirements.in
+    #   flask-restx
+    #   pandas
+pyyaml==6.0.2
+    # via
+    #   -r python/requirements.in
+    #   langchain
+    #   langchain-core
+    #   pre-commit
+pyzmq==26.2.1
+    # via locust
+rapidfuzz==3.12.1
+    # via thefuzz
+referencing==0.36.2
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
+regex==2024.11.6
+    # via tiktoken
+requests[socks]==2.32.3
+    # via
+    #   -r python/requirements.in
+    #   azure-core
+    #   azure-kusto-data
+    #   fastapi-third-party-auth
+    #   langchain
+    #   langsmith
+    #   locust
+    #   msal
+    #   msrest
+    #   opentelemetry-exporter-otlp-proto-http
+    #   pyowm
+    #   requests-oauthlib
+    #   requests-toolbelt
+    #   tiktoken
+    #   wikipedia
+requests-oauthlib==2.0.0
+    # via msrest
+requests-toolbelt==1.0.0
+    # via langsmith
+rpds-py==0.22.3
+    # via
+    #   jsonschema
+    #   referencing
+rsa==4.9
+    # via python-jose
+ruamel-yaml==0.18.10
+    # via promptflow-core
+scikit-learn==1.6.1
+    # via -r python/requirements.in
+scipy==1.15.1
+    # via
+    #   scikit-learn
+    #   statsmodels
+secretstorage==3.3.3
+    # via keyring
+shapely==2.0.7
+    # via geopandas
+six==1.17.0
+    # via
+    #   azure-core
+    #   ecdsa
+    #   parse-type
+    #   python-dateutil
+    #   thrift
+slowapi==0.1.9
+    # via -r python/requirements.in
+smmap==5.0.2
+    # via gitdb
+sniffio==1.3.1
+    # via
+    #   anyio
+    #   httpx
+    #   openai
+soupsieve==2.6
+    # via beautifulsoup4
+sqlalchemy==2.0.37
+    # via
+    #   langchain
+    #   promptflow-devkit
+sse-starlette==2.1.3
+    # via -r python/requirements.in
+starlette==0.41.3
+    # via
+    #   fastapi
+    #   sse-starlette
+    #   starlette-context
+starlette-context==0.3.6
+    # via -r python/requirements.in
+statsmodels==0.14.4
+    # via -r python/requirements.in
+strictyaml==1.7.3
+    # via promptflow-devkit
+tabulate==0.9.0
+    # via promptflow-devkit
+tenacity==9.0.0
+    # via
+    #   azure-kusto-ingest
+    #   langchain
+    #   langchain-core
+termcolor==2.5.0
+    # via pytest-sugar
+thefuzz==0.22.1
+    # via -r python/requirements.in
+threadpoolctl==3.5.0
+    # via scikit-learn
+thrift==0.21.0
+    # via opentelemetry-exporter-jaeger-thrift
+tiktoken==0.8.0
+    # via
+    #   -r python/requirements.in
+    #   promptflow-tracing
+timezonefinder==6.5.8
+    # via -r python/requirements.in
+tqdm==4.67.1
+    # via openai
+typing-extensions==4.12.2
+    # via
+    #   azure-core
+    #   azure-cosmos
+    #   azure-identity
+    #   azure-storage-blob
+    #   azure-storage-queue
+    #   beautifulsoup4
+    #   fastapi
+    #   langchain-core
+    #   limits
+    #   openai
+    #   opentelemetry-sdk
+    #   pydantic
+    #   pydantic-core
+    #   pydash
+    #   pytest-bdd
+    #   sqlalchemy
+tzdata==2025.1
+    # via pandas
+urllib3==2.3.0
+    # via
+    #   geventhttpclient
+    #   requests
+uvicorn==0.34.0
+    # via
+    #   -r python/requirements.in
+    #   sse-starlette
+virtualenv==20.29.1
+    # via pre-commit
+waitress==2.1.2
+    # via promptflow-devkit
+websocket-client==1.0.0
+    # via -r python/requirements.in
+werkzeug==3.1.3
+    # via
+    #   flask
+    #   flask-login
+    #   flask-restx
+    #   locust
+wikipedia==1.4.0
+    # via -r python/requirements.in
+wrapt==1.17.2
+    # via
+    #   deprecated
+    #   opentelemetry-instrumentation
+    #   opentelemetry-instrumentation-dbapi
+    #   opentelemetry-instrumentation-urllib3
+yarl==1.18.3
+    # via aiohttp
+zipp==3.21.0
+    # via importlib-metadata
+zope-event==5.0
+    # via gevent
+zope-interface==7.2
+    # via gevent
+zstandard==0.23.0
+    # via langsmith
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
