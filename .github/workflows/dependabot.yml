@@ -3,7 +3,7 @@ name: Run pip-compile
 on:
   push:
     branches:
-      - main  # or the default branch you're using
+      - '*'
     paths:
       - 'python/requirements.in'  # Trigger on changes to requirements.in
 
