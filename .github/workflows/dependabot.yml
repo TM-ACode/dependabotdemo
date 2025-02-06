@@ -1,9 +1,9 @@
 name: Run pip-compile
 
-on: [push]
-#  pull_request:
-#    paths:
-#      - 'python/requirements.in'  # Trigger on pull requests that affect requirements.in
+on:
+  pull_request:
+    paths:
+      - 'python/requirements.in'  # Trigger on pull requests that affect requirements.in
 
 jobs:
   compile:
