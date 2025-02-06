@@ -1,0 +1,35 @@
+name: Run pip-compile
+
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - 'python/requirements.in'  # Trigger on changes to requirements.in
+
+jobs:
+  compile:
+    if: github.actor == 'dependabot[bot]'  # Check if the actor is dependabot[bot]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Specify your Python version
+
+      - name: Install pip-tools
+        run: pip install pip-tools
+
+      - name: Compile requirements
+        run: pip-compile python/requirements.in --output-file=python/requirements.txt
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+          git add python/requirements.txt
+          git commit -m "Update requirements.txt" || echo "No changes to commit"
+          git push

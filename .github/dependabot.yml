@@ -1,15 +1,7 @@
 ---
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: npm
-    directory: "/javascript"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: bundler
-    directory: "/ruby"
+  - package-ecosystem: pip
+    directory: "/python"
     schedule:
       interval: "weekly"
