@@ -9,6 +9,7 @@ on:
 
 jobs:
   compile:
+    if: github.actor == 'dependabot[bot]'  # Check if the actor is dependabot[bot]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
