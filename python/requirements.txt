@@ -148,7 +148,6 @@ faiss-cpu==1.9.0
     # via -r python/requirements.in
 fastapi==0.115.4
     # via
-    #   -r python/requirements.in
     #   fastapi-third-party-auth
     #   promptflow-core
 fastapi-third-party-auth==0.1.2
@@ -192,8 +191,6 @@ gevent==24.10.3
     #   locust
 geventhttpclient==2.3.1
     # via locust
-gherkin-official==29.0.0
-    # via pytest-bdd
 gitdb==4.0.11
     # via gitpython
 gitpython==3.1.43
@@ -295,12 +292,9 @@ limits==4.0.1
     # via slowapi
 locust==2.32.8
     # via -r python/requirements.in
-mako==1.3.9
-    # via pytest-bdd
 markupsafe==3.0.2
     # via
     #   jinja2
-    #   mako
     #   werkzeug
 marshmallow==3.26.1
     # via promptflow-devkit
@@ -466,7 +460,6 @@ packaging==24.2
     #   opentelemetry-instrumentation-flask
     #   pyogrio
     #   pytest
-    #   pytest-bdd
     #   pytest-sugar
     #   statsmodels
 pandas==2.2.3
@@ -475,12 +468,6 @@ pandas==2.2.3
     #   geopandas
     #   promptflow-devkit
     #   statsmodels
-parse==1.20.2
-    # via
-    #   parse-type
-    #   pytest-bdd
-parse-type==0.6.4
-    # via pytest-bdd
 pathspec==0.12.1
     # via black
 patsy==1.0.1
@@ -535,7 +522,6 @@ pycparser==2.22
     # via cffi
 pydantic==2.10.6
     # via
-    #   -r python/requirements.in
     #   fastapi
     #   fastapi-third-party-auth
     #   langchain
@@ -569,26 +555,16 @@ pysocks==1.7.1
     #   requests
 pytest==8.3.4
     # via
-    #   -r python/requirements.in
-    #   pytest-asyncio
-    #   pytest-bdd
     #   pytest-cov
     #   pytest-env
     #   pytest-instafail
-    #   pytest-mock
     #   pytest-sugar
     #   pytest-xdist
-pytest-asyncio==0.25.3
-    # via -r python/requirements.in
-pytest-bdd==8.1.0
-    # via -r python/requirements.in
 pytest-cov==6.0.0
     # via -r python/requirements.in
 pytest-env==1.1.5
     # via -r python/requirements.in
 pytest-instafail==0.5.0
-    # via -r python/requirements.in
-pytest-mock==3.14.0
     # via -r python/requirements.in
 pytest-sugar==1.0.0
     # via -r python/requirements.in
@@ -671,7 +647,6 @@ six==1.17.0
     # via
     #   azure-core
     #   ecdsa
-    #   parse-type
     #   python-dateutil
     #   thrift
 slowapi==0.1.9
@@ -741,7 +716,6 @@ typing-extensions==4.12.2
     #   pydantic
     #   pydantic-core
     #   pydash
-    #   pytest-bdd
     #   sqlalchemy
 tzdata==2025.1
     # via pandas
@@ -750,9 +724,7 @@ urllib3==2.3.0
     #   geventhttpclient
     #   requests
 uvicorn==0.34.0
-    # via
-    #   -r python/requirements.in
-    #   sse-starlette
+    # via sse-starlette
 virtualenv==20.29.1
     # via pre-commit
 waitress==2.1.2
