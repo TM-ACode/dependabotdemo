@@ -1,15 +1,29 @@
----
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: gomod
     directory: "/"
+    target-branch: master
     schedule:
-      interval: "weekly"
-  - package-ecosystem: npm
-    directory: "/javascript"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: bundler
-    directory: "/ruby"
-    schedule:
-      interval: "weekly"
+      interval: weekly
+      day: wednesday
+      time: "16:10"
+    open-pull-requests-limit: 20
+    ignore:
+      - dependency-name: "go.mongodb.org/atlas-sdk/*"
+    groups:
+      golang:
+        patterns:
+          - "golang.org*"
+      google:
+        patterns:
+          - "*google.golang.org*"
+      aws:
+        patterns:
+          - "github.com/aws*"
+      containers:
+        patterns:
+          - "github.com/containers*"
+      otel:
+        patterns:
+          - "go.opentelemetry.io/otel*"
+ 

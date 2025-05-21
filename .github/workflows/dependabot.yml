@@ -1,0 +1,35 @@
+---
+  name: run make and push to depenabot pr
+
+  on:
+    pull_request:
+      types: [opened]
+
+  permissions: 
+    pull-requests: write
+    contents: write
+    repository-projects: read
+  jobs:
+    run-make:
+      name: Run make
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 2
+      - name: Run make
+        run: |
+          make gen-purls
+      - name: Commit updated purls.txt if changed
+        run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+            echo "purls.txt changed, committing..."
+            git add purls.txt
+            git commit -m "chore: update purls.txt after dependency bump"
+            git push
+            else
+            echo "No changes to purls.txt"
+            fi
