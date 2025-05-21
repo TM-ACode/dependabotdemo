@@ -20,21 +20,20 @@
         run: |
           make gen-purls
           cat purls.txt 
-      - name: Determine branch name  
-        id: determine_branch  
-        run: |  
-            # Extract the branch name from the GitHub reference  
-            branch_name=$(echo "${GITHUB_HEAD_REF}")  
-            echo "branch=${branch_name}" >> $GITHUB_ENV  
-      - name: Checkout pull request branch  
-        run: |  
-            git checkout "$branch" 
+      - name: Checkout PR with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed to fetch all branches
+          ref: ${{ github.head_ref }}
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Commit updated purls.txt if changed
         run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-            echo "purls.txt changed, committing..."
-            git add purls.txt
-            git commit -m "chore: update purls.txt after dependency bump"
-            git push origin "$branch"
+          echo "purls.txt changed, committing..."
+          git add purls.txt
+          git diff --cached --quiet || git commit -m "chore: update purls.txt after dependency bump"
+          git push origin HEAD
