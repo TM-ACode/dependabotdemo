@@ -21,6 +21,16 @@
       - name: Run make
         run: |
           make gen-purls
+          cat purls.txt 
+      - name: Determine branch name  
+        id: determine_branch  
+        run: |  
+            # Extract the branch name from the GitHub reference  
+            branch_name=$(echo "${GITHUB_HEAD_REF}")  
+            echo "branch=${branch_name}" >> $GITHUB_ENV  
+      - name: Checkout pull request branch  
+        run: |  
+            git checkout "$branch" 
       - name: Commit updated purls.txt if changed
         run: |
             git config --global user.name "github-actions[bot]"
@@ -29,7 +39,4 @@
             echo "purls.txt changed, committing..."
             git add purls.txt
             git commit -m "chore: update purls.txt after dependency bump"
-            git push
-            else
-            echo "No changes to purls.txt"
-            fi
+            git push origin "$branch"
