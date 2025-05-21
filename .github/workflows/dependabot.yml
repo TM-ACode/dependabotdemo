@@ -32,4 +32,4 @@ jobs:
           echo "purls.txt changed, committing..."
           git add purls.txt || echo "No purls.txt to add"
           git commit -m "chore: update purls.txt"
-            git push
+          git push
