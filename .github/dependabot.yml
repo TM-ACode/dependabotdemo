@@ -13,4 +13,3 @@ updates:
       - dependency-name: "@orolabs/oro-ui-toolkit"
     registries:
       - github
-    open-pull-requests-limit: 5
