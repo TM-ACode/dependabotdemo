@@ -4,12 +4,15 @@ registries:
     type: npm-registry
     url: https://npm.pkg.github.com
     token: ${{ secrets.DEPENDABOT_GITHUB_TOKEN }}
+    replaces-base: true
 updates:
   - package-ecosystem: npm
-    directory: /javascript
+    directory: "/javascript"
     schedule:
       interval: daily
     allow:
       - dependency-name: "@orolabs/oro-ui-toolkit"
+      - dependency-name: "@orolabs/oro-ui-kit"
     registries:
       - github
+    open-pull-requests-limit: 5
