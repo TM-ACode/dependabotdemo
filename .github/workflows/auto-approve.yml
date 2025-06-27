@@ -1,0 +1,37 @@
+name: Auto-Approve Oro UI Toolkit Changes
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Needed to access the previous commit for comparison
+
+      - name: Check package.json changes
+        id: check-package
+        run: |
+          # Get the diff for package.json
+          git diff HEAD^ HEAD -- package.json > diff.txt
+          
+          # Check if @orolabs/oro-ui-toolkit version changed
+          if grep -q '"@orolabs/oro-ui-toolkit"' diff.txt; then
+            echo "Package @orolabs/oro-ui-toolkit version changed"
+            echo "package_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "Package @orolabs/oro-ui-toolkit not changed"
+            echo "package_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Approve PR if package version changed
+        if: steps.check-package.outputs.package_changed == 'true'
+        run: |
+          gh pr review $PR_NUMBER --approve -b "Auto-approved: @orolabs/oro-ui-toolkit version changed"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
