@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@orolabs/oro-ui-kit": "1.0.123",
-    "@orolabs/oro-ui-toolkit": "2.0.941",
+    "@orolabs/oro-ui-toolkit": "2.0.942",
     "hot-formula-parser": "^3.0.0",
     "lodash": "^4.17.20"
   }
