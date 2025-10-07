@@ -14,8 +14,15 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
+      
+      - name: Fetch main branch
+        run: git fetch origin main
+
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
           vulnerability-check: true
+          base-ref: origin/main
+          head-ref: ${{ github.sha }}
+
