@@ -1,28 +1,35 @@
-
 name: 'Dependency Review'
 
 on:
   push:
     branches:
-      - tesbranch 
+      - testbranch
 
 permissions:
   contents: read
+
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 'Checkout Repository'
+      - name: Checkout current branch
         uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0  # Ensures full history is available
+
       - name: Fetch main branch
         run: git fetch origin main
+
+      - name: Get latest commit SHA from main
+        id: get-main-sha
+        run: |
+          echo "sha=$(git rev-parse origin/main)" >> $GITHUB_OUTPUT
 
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
           vulnerability-check: true
-          base-ref: origin/main
+          base-ref: ${{ steps.get-main-sha.outputs.sha }}
           head-ref: ${{ github.sha }}
-
