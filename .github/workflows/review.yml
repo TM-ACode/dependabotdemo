@@ -3,7 +3,7 @@ name: 'Dependency Review'
 on:
   push:
     branches:
-      - testbranch
+      - tesbranch
 
 permissions:
   contents: read
