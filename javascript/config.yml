@@ -1,0 +1,14 @@
+application:
+  rest:
+    cool-api:
+      url: https://my.domain.ch/cool/protected
+      access-token: "eyJraWQiOiJkZWZhdWx0LXRlc3Qta2V5IiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiI2OTM2ODYwOC1ENzM2LTQzQzgtNUY3Ni01NUI3QkYxNjgyOTkiLCJuYmYiOjE3NjAzNTQyOTUsInVzZXJyb2xlcyI6WyJzZWN1cmVfQGRhbmdlcl8jcmVhZCJdLCJjdHgiOiJTWVMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2F1dGgiLCJleHAiOjE3NjAzNjE0OTUsImlhdCI6MTc2MDM1NDI5NSwianRpIjoidGVzdC10b2tlbiJ9.I9FPY3LaqlQJk29wF99O-XUGxuqtiJ-VSKMOpwBdvwOFKgjwzkBbv3ALmLeyWsLuAMRZEoQ9LgPAbk1GJ5xQtTlebugig9mH_GqW8U0WwR7d6oW_lHs7RPlOJ2_3qZyzTva9zWeP6OHmPVcq_oSfh-5bVieylHXHn4P_lhdZqgxIJ66SceyHNDyJ9j8NhXAgyvk-JkebVM2wugsHpud1TuioMSX6d622YZYtzr5vfd4kIxZRQl5B-zmlZTDDnblbrKxhiFriq-87VbvxWmo0S59iVXbzt5tjediSWbh83QLc4G1stJoACB_TgKikRtB5uxy0iaOvvKx8-NcgA8DMHw"
+    legacy-api:
+      url: https://my.domain.ch/legacy/protected
+      user: administrator
+      password: E45hjdd&j03An+1G
+  other:
+    prop-1: "Das ist ein Text"
+    prop-2: 45
+
+    
