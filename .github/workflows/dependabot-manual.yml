@@ -1,0 +1,115 @@
+name: Dependabot (Manual / CLI)
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_ecosystem:
+        description: "Package manager / ecosystem (e.g., npm, pip, maven, gradle, bundler, gomod, composer, cargo)"
+        required: true
+        type: choice
+        options:
+          - npm
+          - yarn
+          - pnpm
+          - pip
+          - pipenv
+          - poetry
+          - maven
+          - gradle
+          - bundler
+          - gomod
+          - composer
+          - cargo
+          - nuget
+          - hex
+          - elm
+          - submodules
+          - docker
+      directory:
+        description: "Directory to scan (path from repo root, e.g., /, /src, /services/api)"
+        required: true
+        default: "/"
+        type: string
+      target_branch:
+        description: "Branch to update against (e.g., main, develop, release/x.y)"
+        required: true
+        default: "main"
+        type: string
+      security_updates_only:
+        description: "Only raise PRs for vulnerable dependencies"
+        required: false
+        default: "false"
+        type: choice
+        options: ["true", "false"]
+      open_prs_limit:
+        description: "Maximum number of open Dependabot PRs to create/update"
+        required: false
+        default: "5"
+        type: string
+
+permissions:
+  contents: write         # allow branch pushes for PRs
+  pull-requests: write    # allow creating/updating PRs
+  # security-events: read # optional; only needed if you later wire into alerts
+jobs:
+  dependabot-cli:
+    name: Run Dependabot Core (CLI)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (full history for accurate manifest resolution)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Optional: ensure Docker is available (it is on ubuntu-latest)
+      - name: Print inputs
+        run: |
+          echo "ecosystem=${{ inputs.package_ecosystem }}"
+          echo "directory=${{ inputs.directory }}"
+          echo "target=${{ inputs.target_branch }}"
+          echo "security_only=${{ inputs.security_updates_only }}"
+          echo "pr_limit=${{ inputs.open_prs_limit }}"
+
+      # Run dependabot-core inside its official container.
+      # NOTE: We pass configuration through well-known environment variables
+      # that the update script reads (see dependabot-core/bin/update-script.rb).
+      - name: Run dependabot-core update
+        env:
+          # Repo / auth
+          GITHUB_ACCESS_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
+          DEPENDABOT_REPOSITORY: ${{ github.repository }}
+
+          # What to update
+          DEPENDABOT_PACKAGE_MANAGER: ${{ inputs.package_ecosystem }}
+          DEPENDABOT_DIRECTORY: ${{ inputs.directory }}
+          DEPENDABOT_TARGET_BRANCH: ${{ inputs.target_branch }}
+
+          # Behavior
+          DEPENDABOT_SECURITY_UPDATES_ONLY: ${{ inputs.security_updates_only }}
+          DEPENDABOT_OPEN_PULL_REQUESTS_LIMIT: ${{ inputs.open_prs_limit }}
+          # Optional: allow conditional (semver‑compatible) updates to reduce churn
+          DEPENDABOT_ALLOW_CONDITIONAL_UPDATES: "true"
+
+          # Optional: tweak PR labeling, reviewers, etc.
+          # DEPENDABOT_LABELS: "dependencies,security"
+          # DEPENDABOT_REVIEWERS: "org/team-security"
+        run: |
+          docker run --rm \
+            -e GITHUB_ACCESS_TOKEN \
+            -e DEPENDABOT_REPOSITORY \
+            -e DEPENDABOT_PACKAGE_MANAGER \
+            -e DEPENDABOT_DIRECTORY \
+            -e DEPENDABOT_TARGET_BRANCH \
+            -e DEPENDABOT_SECURITY_UPDATES_ONLY \
+            -e DEPENDABOT_OPEN_PULL_REQUESTS_LIMIT \
+            -e DEPENDABOT_ALLOW_CONDITIONAL_UPDATES \
+            -v "${PWD}":/home/dependabot/dependabot-src \
+            ghcr.io/dependabot/dependabot-core:latest \
+            bundle exec ruby ./bin/update-script.rb
+
+      # (Optional) Enrich the PR with metadata like ecosystem, severity, etc.
+      # Requires pull_request_target context; here we’re creating PRs from this job,
+      # so we can call fetch-metadata via REST later or rely on branch protections.
+      # - uses: dependabot/fetch-metadata@v2
+      #   with:
+      #     github-token: ${{ secrets.DEPENDABOT_TOKEN }}
