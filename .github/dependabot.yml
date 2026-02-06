@@ -1,15 +1,18 @@
----
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: npm
-    directory: "/javascript"
+    groups:
+      action-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm" # Replace with "pip" for Python
+    directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: bundler
-    directory: "/ruby"
-    schedule:
-      interval: "weekly"
+    groups:
+      minor-patches:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
